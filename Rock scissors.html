@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+  <h1>Rock Paper Scissors Game</h1>
+  
+  <label for="player-choice">Enter your choice (Rock, Paper, or Scissors):</label>
+  <input type="text" id="player-choice">
+  <button onclick="playRound()">Play</button>
+  
+  <h2>Results:</h2>
+  <ul id="results"></ul>
+  
+  <script>
+    function getComputerChoice() {
+      const choices = ['Rock', 'Paper', 'Scissors'];
+      const randomIndex = Math.floor(Math.random() * choices.length);
+      return choices[randomIndex];
+    }
+
+    function playRound() {
+      const playerSelection = document.getElementById("player-choice").value;
+      const computerSelection = getComputerChoice();
+
+      const result = determineWinner(playerSelection, computerSelection);
+      displayResult(result);
+    }
+
+    function determineWinner(playerSelection, computerSelection) {
+      playerSelection = playerSelection.toLowerCase();
+      computerSelection = computerSelection.toLowerCase();
+
+      if (playerSelection === computerSelection) {
+        return "It's a tie!";
+      } else if (
+        (playerSelection === 'rock' && computerSelection === 'scissors') ||
+        (playerSelection === 'paper' && computerSelection === 'rock') ||
+        (playerSelection === 'scissors' && computerSelection === 'paper')
+      ) {
+        return "You win! " + playerSelection + " beats " + computerSelection;
+      } else {
+        return "You lose! " + computerSelection + " beats " + playerSelection;
+      }
+    }
+
+    function displayResult(result) {
+      const resultsList = document.getElementById("results");
+      const listItem = document.createElement("li");
+      listItem.textContent = result;
+      resultsList.appendChild(listItem);
+    }
+  </script>
+</body>
+</html>
