@@ -2,17 +2,22 @@
 <html>
 <head>
   <title>Rock Paper Scissors Game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Rock Paper Scissors Game</h1>
-  
-  <label for="player-choice">Enter your choice (Rock, Paper, or Scissors):</label>
-  <input type="text" id="player-choice">
-  <button onclick="playRound()">Play</button>
-  
-  <h2>Results:</h2>
-  <ul id="results"></ul>
-  
+  <div class="container">
+    <h1>Rock Paper Scissors Game</h1>
+    
+    <div class="input-section">
+      <label for="player-choice">Enter your choice (Rock, Paper, or Scissors):</label>
+      <input type="text" id="player-choice">
+      <button onclick="playRound()">Play</button>
+    </div>
+    
+    <h2>Results:</h2>
+    <ul id="results" class="results-list"></ul>
+  </div>
+
   <script>
     function getComputerChoice() {
       const choices = ['Rock', 'Paper', 'Scissors'];
